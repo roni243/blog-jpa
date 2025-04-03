@@ -29,4 +29,4 @@ public class BoardRepositoryTest {
         System.out.println(board.getUser().getPassword());
     }
 
-}
+} //
