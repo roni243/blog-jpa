@@ -42,4 +42,4 @@ public class BoardRepository {
     public Board findByIdV2(int id) {
         return em.find(Board.class, id);
     }
-}
+} //
