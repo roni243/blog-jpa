@@ -16,7 +16,14 @@ public class BoardController {
 
     @GetMapping("/")
     public String list(HttpServletRequest request) {
-        request.setAttribute("models", boardService.글목록보기());
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if (sessionUser == null) {
+            request.setAttribute("models", boardService.글목록보기(null));
+        } else {
+            request.setAttribute("models", boardService.글목록보기(sessionUser.getId()));
+        }
+
         return "board/list";
     }
 

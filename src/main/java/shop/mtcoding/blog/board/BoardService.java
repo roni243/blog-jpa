@@ -12,8 +12,14 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    public List<Board> 글목록보기() {
-        return boardRepository.findAll();
+    public List<Board> 글목록보기(Integer userId) {
+        return boardRepository.findAll(userId);
+//        if (userId == null) {
+//            return boardRepository.findAll();
+//        } else {
+//
+//
+//        }
     }
 
     @Transactional
