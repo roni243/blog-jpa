@@ -18,8 +18,9 @@ public class BoardResponse {
         private Integer loveCount;
         private String username;
         private Timestamp createdAt;
+        private Integer loveId;
 
-        public DetailDTO(Board board, Integer sessionUserId, Boolean isLove) {
+        public DetailDTO(Board board, Integer sessionUserId, Boolean isLove, Integer loveCount, Integer loveId) {
             this.id = board.getId();
             this.title = board.getTitle();
             this.content = board.getContent();
@@ -29,7 +30,8 @@ public class BoardResponse {
             this.createdAt = board.getCreatedAt();
             //this.isLove = sessionUserId == 1 ? true : false;
             this.isLove = isLove;
-            this.loveCount = 3;
+            this.loveCount = loveCount;
+            this.loveId = loveId;
         }
     }
 }

@@ -35,9 +35,10 @@ public class BoardService {
         Love love = loveRepository.findByUserIdAndBoardId(userId, id);
         Long loveCount = loveRepository.findByBoardId(id);
 
+        Integer loveId = love == null ? null : love.getId();
         Boolean isLove = love == null ? false : true;
 
-        BoardResponse.DetailDTO detailDTO = new BoardResponse.DetailDTO(board, userId, isLove);
+        BoardResponse.DetailDTO detailDTO = new BoardResponse.DetailDTO(board, userId, isLove, loveCount.intValue(), loveId);
         return detailDTO;
     }
 
