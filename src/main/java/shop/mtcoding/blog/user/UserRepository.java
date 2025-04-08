@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 public class UserRepository {
     private final EntityManager em;
 
+    public User findById(Integer id) {
+        return em.find(User.class, id);
+    }
+
 
     /*
         1. createNativeQuery -> 기본쿼리
