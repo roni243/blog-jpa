@@ -12,6 +12,11 @@ import java.util.List;
 public class BoardRepository {
     private final EntityManager em;
 
+    // 한방쿼리(h2 query, om -> dto)
+    public BoardResponse.DetailDTO findDetail(Integer boardId, Integer userId) {
+        return null;
+    }
+
 
     public Board findByIdJoinUser(Integer id) {
         Query query = em.createQuery("select b from Board b join fetch b.user u where b.id = :id", Board.class);
