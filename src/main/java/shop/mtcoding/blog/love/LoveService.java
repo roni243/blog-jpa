@@ -19,8 +19,12 @@ public class LoveService {
 
     @Transactional
     public LoveResponse.DeleteDTO 좋아요취소(Integer id) {
+
         Love lovePS = loveRepository.findById(id);
         if (lovePS == null) throw new RuntimeException("좋아요 안했는데 왜 취소를 하려고 해");
+
+        //권한체크 (lovePS.getUser().getID())를 세션유저아이디와 비교 Integer객체니 equals로 비교
+        // 안될때 터트리기
 
         Integer boardId = lovePS.getBoard().getId();
 
