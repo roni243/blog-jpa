@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import shop.mtcoding.blog.reply.Reply;
 import shop.mtcoding.blog.user.User;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Table(name = "board_tb")
 @Entity
 public class Board {
@@ -27,7 +29,7 @@ public class Board {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user; // ORM
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Reply> replies = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
@@ -44,5 +46,16 @@ public class Board {
         this.isPublic = isPublic;
         this.user = user;
         this.createdAt = createdAt;
+    }
+
+    public void update(String title, String content, String isPublic) {
+        this.title = title;
+        this.content = content;
+        this.isPublic = isPublic == null ? false : true;
+    }
+
+    public void delete(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
