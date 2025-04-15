@@ -8,7 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
-
+//@ToString
 @NoArgsConstructor
 @Getter
 @Table(name = "user_tb")

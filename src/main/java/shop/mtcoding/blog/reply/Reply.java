@@ -12,6 +12,7 @@ import shop.mtcoding.blog.user.User;
 
 import java.sql.Timestamp;
 
+//@ToString
 @NoArgsConstructor//(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "reply_tb")

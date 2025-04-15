@@ -1,10 +1,7 @@
 package shop.mtcoding.blog.board;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import shop.mtcoding.blog.reply.Reply;
 import shop.mtcoding.blog.user.User;
@@ -13,6 +10,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 @NoArgsConstructor
 @Getter
 @Setter
@@ -29,7 +27,7 @@ public class Board {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user; // ORM
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
     private List<Reply> replies = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY)

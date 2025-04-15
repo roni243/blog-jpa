@@ -43,6 +43,7 @@ public class BoardRepositoryTest {
         // given
         Integer boardId = 4;
         Board board = boardRepository.findById(boardId);
+        System.out.println(board);
     }
 
     @Test
@@ -57,17 +58,16 @@ public class BoardRepositoryTest {
     @Commit
     public void delete_test() {
 
-        Integer id = 1; // 삭제하려는 게시글의 ID
+        Integer id = 1;
 
-        // 게시글 삭제
+
         Query q2 = em.createQuery("DELETE FROM Board b WHERE b.id = :id");
         q2.setParameter("id", id);
-        q2.executeUpdate();  // 게시글 삭제
+        q2.executeUpdate();
 
-        em.flush();  // 세션 캐시를 DB에 반영
-        em.clear();  // 캐시 초기화, DB와의 동기화 확인
+        em.flush();
+        em.clear();
 
-        // 삭제 후 남아있는 게시글 수 조회
         Long count = em.createQuery("SELECT COUNT(b) FROM Board b", Long.class)
                 .getSingleResult();
 
