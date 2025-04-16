@@ -15,13 +15,13 @@ public class GlobalValidationHandler {
     @Before("@annotation(shop.mtcoding.blog._core.error.anno.MyBefore)") // 매개변수 정보까지 알수있다. 필드안, 리턴까지
     public void beforeAdvice(JoinPoint jp) {
         String name = jp.getSignature().getName();
-        System.out.println("Before Advice" + name);
+        System.out.println("Before Advice : " + name);
     }
 
     @After("@annotation(shop.mtcoding.blog._core.error.anno.MyAfter)")
     public void afterAdvice(JoinPoint jp) {
         String name = jp.getSignature().getName();
-        System.out.println("After Advice" + name);
+        System.out.println("After Advice : " + name);
     }
 
     @Around("@annotation(shop.mtcoding.blog._core.error.anno.MyAround)")
